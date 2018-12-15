@@ -8,7 +8,7 @@
         [min]="'0'"
         [max]="stage.stageLength"
         [smallStep]="'1'"
-        [(ngModel)]="progress.value">
+        [(ngModel)]="stage.sequence">
     </kendo-slider>
 </div>
 
@@ -16,13 +16,11 @@
 <div>
     Enter current stage code:
     <input kendoTextBox [(ngModel)]="currentStageCode">
-    <!-- <button (click)="onCurrstageCodeFeed()">OK</button> -->
 </div>
 
 <div>
     Enter previous stage code:
     <input kendoTextBox [(ngModel)]="previousStageCode">
-    <!-- <button (click)="onPrevstageCodeFeed()">OK</button> -->
 </div>
 <button (click)="onStageCodeFeed()">OK</button>
 
@@ -40,3 +38,5 @@
           </video>          
     </ng-container>
 </div>
+
+<button (click)="onResetClick()">Reset</button>

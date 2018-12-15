@@ -11,13 +11,6 @@ export class HomeComponent implements OnInit {
 
   constructor(private homeService: HomeService) { }
 
-  public progress = {
-    value: 5,
-    min: 0,
-    max: 18,
-    smallStep: 1
-  };
-
   // Capture variables
   public currentStageCode: string;
   public previousStageCode: string;
@@ -29,8 +22,7 @@ export class HomeComponent implements OnInit {
   public showStageDetails: boolean;
 
   ngOnInit() {
-    this.currentStageCode = '';
-    this.previousStageCode = '';
+    this.onResetClick();
   }
 
   public onStageCodeFeed() {
@@ -50,6 +42,12 @@ export class HomeComponent implements OnInit {
   private resetCurrentStage(){
     this.showStageDetails = false;
     this.stage = {};
+  }
+
+  public onResetClick(){
+    this.resetCurrentStage();
+    this.currentStageCode = '';
+    this.previousStageCode = '';
   }
 
 }
