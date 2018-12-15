@@ -1,0 +1,42 @@
+<p *ngIf="showStageDetails">{{stage.sequence}}/{{stage.stageLength}}  Team-{{stage.team}}</p>
+
+<div *ngIf="showStageDetails">
+    <kendo-slider [fixedTickWidth]="stage.stageLength"
+        [showButtons]="false"
+        [tickPlacement]="'none'"
+        [readonly]="true"
+        [min]="'0'"
+        [max]="stage.stageLength"
+        [smallStep]="'1'"
+        [(ngModel)]="progress.value">
+    </kendo-slider>
+</div>
+
+
+<div>
+    Enter current stage code:
+    <input kendoTextBox [(ngModel)]="currentStageCode">
+    <!-- <button (click)="onCurrstageCodeFeed()">OK</button> -->
+</div>
+
+<div>
+    Enter previous stage code:
+    <input kendoTextBox [(ngModel)]="previousStageCode">
+    <!-- <button (click)="onPrevstageCodeFeed()">OK</button> -->
+</div>
+<button (click)="onStageCodeFeed()">OK</button>
+
+<div *ngIf="showStageDetails">
+    <textarea kendoTextArea [ngModel]="stage.hint" [readonly]="true"></textarea>
+</div>
+
+<div *ngIf="showStageDetails">
+    <ng-container *ngIf="stage.media?.type===0">
+        <img [src]="stage.media.src">
+    </ng-container>
+    <ng-container *ngIf="stage.media?.type===1">
+        <video width="400" controls>
+            <source [src]="stage.media.src" type="video/mp4">
+          </video>          
+    </ng-container>
+</div>
