@@ -1,4 +1,4 @@
-<p *ngIf="showStageDetails">{{stage.sequence}}/{{stage.stageLength}}  Team-{{stage.team}}</p>
+<!-- <p *ngIf="showStageDetails">{{stage.sequence}}/{{stage.stageLength}}  Team-{{stage.team}}</p>
 
 <div *ngIf="showStageDetails">
     <kendo-slider [fixedTickWidth]="stage.stageLength"
@@ -40,3 +40,54 @@
 </div>
 
 <button (click)="onResetClick()">Reset</button>
+ -->
+
+<div class="bgg-img">
+    <!-- <img src="assets/img/img1.jpg" class="bgg-img" /> -->
+</div>
+<div class="header-caption">
+    <h1>Treasure Hunt </h1>
+    <h6 *ngIf="showStageDetails"> Team-{{stage.team}}</h6>
+    <h6 *ngIf="showStageDetails">{{stage.sequence}}/{{stage.stageLength}} </h6>
+    <div *ngIf="showStageDetails" class="mr-170">
+        <kendo-slider [fixedTickWidth]="stage.stageLength"
+            [showButtons]="false"
+            [tickPlacement]="'none'"
+            [readonly]="true"
+            [min]="'0'"
+            [max]="stage.stageLength"
+            [smallStep]="'1'"
+            [(ngModel)]="stage.sequence">
+        </kendo-slider>
+    </div>  
+    <div class="caption">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+            <div class="form-group">
+                <label>Enter Current Stage Code</label>
+                <input type="text" name="" class="form-control"  kendoTextBox [(ngModel)]="currentStageCode">
+            </div>
+            <div class="form-group">
+                <label>Enter Previous Stage Code</label>
+                <input type="text" name="" class="form-control" kendoTextBox [(ngModel)]="previousStageCode">
+            </div>
+            <button class="btn" (click)="onStageCodeFeed()"><img src="assets/img/draw-check-mark.svg" class="icon" /> </button>
+             <button class="btn" (click)="onResetClick()"><img src="assets/img/refresh.svg" class="icon" /></button>
+           
+            <div class="form-group" *ngIf="showStageDetails">
+                <textarea kendoTextArea [ngModel]="stage.hint" [readonly]="true" rows="2" class="form-control"></textarea>
+            </div>
+            <div *ngIf="showStageDetails" class="mb-3">
+                <ng-container *ngIf="stage.media?.type===0">
+                    <img [src]="stage.media.src">
+                </ng-container>
+                <ng-container *ngIf="stage.media?.type===1">
+                    <video width="400" controls>
+                        <source [src]="stage.media.src" type="video/mp4">
+                      </video>          
+                </ng-container>
+            </div>
+         </div>
+       </div>
+   </div>
+</div>

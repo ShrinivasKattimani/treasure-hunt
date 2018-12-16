@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+.k-slider-track {
+    width: 200px !important;
+}
+
+.k-slider .k-draghandle {
+    border-color: #46d834;
+    background-color: #46d834;
+}
+
+.k-slider:hover .k-draghandle:hover {
+    border-color: #46d834;
+    background-color: #46d834;
+}
+
+.k-slider .k-slider-selection {
+    background-color: #46d834;
+}
